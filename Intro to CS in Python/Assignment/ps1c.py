@@ -55,7 +55,6 @@ down_payment = total_cost * portion_down_payment # down payment cost
 bisection_times = 0 # The number of bisection search iterations. Starting from 0
 
 # Define Function returning current_savings
-
 def diff_cur_savings(save_portion, current_savings, monthly_salary) :
     for month in range (36) :
         current_savings += current_savings * r/12
