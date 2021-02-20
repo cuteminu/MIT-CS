@@ -22,20 +22,19 @@ bisection_times = 0 # The number of bisection search iterations. Starting from 0
 
 def diff_cur_savings(save_portion, current_savings, monthly_salary) :
     for month in range (36) :
-        current_savings += current_savings * r/12
-        current_savings += monthly_salary * save_portion
+        current_savings += current_savings * r/12 + monthly_salary * save_portion
         if month % 6 == 0 :
             monthly_salary += monthly_salary * .07
     return current_savings - down_payment 
 
-# Bisection Search
+# Bisection Search : An algorithm to find answer. 
 start = 0 # starting point of bisection search. starting from 0
 end = 10000 # end point of bisection search. starting from 10000
 saving_rate = 0
 
 while diff_cur_savings(start * 0.0001, current_savings, monthly_salary) * diff_cur_savings(end * 0.0001, current_savings, monthly_salary) < 0 :
     mid = (start + end) / 2
-    if abs(diff_cur_savings(mid * 0.0001, current_savings, monthly_salary)) == 0 or abs(diff_cur_savings(start * 0.0001, current_savings, monthly_salary) - diff_cur_savings(end * 0.0001, current_savings, monthly_salary))/2 < 100 : # 
+    if abs(diff_cur_savings(mid * 0.0001, current_savings, monthly_salary)) == 0 or abs(diff_cur_savings(start * 0.0001, current_savings, monthly_salary) - diff_cur_savings(end * 0.0001, current_savings, monthly_salary))/2 < 100 :  
         saving_rate = mid
         break
     elif diff_cur_savings(start * 0.0001, current_savings, monthly_salary) * diff_cur_savings(mid * 0.0001, current_savings, monthly_salary) < 0 : 
@@ -46,7 +45,7 @@ while diff_cur_savings(start * 0.0001, current_savings, monthly_salary) * diff_c
     bisection_times += 1
 
 # Print Result
-if bisection_times == 0 :
+if bisection_times == 0 : # portion of 1.0 has negative function return value
     print("It is not possible to pay the down payment in three years.")
 else :
     print("Best savings rate:", saving_rate * 0.0001)
