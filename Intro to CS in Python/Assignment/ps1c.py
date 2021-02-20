@@ -70,7 +70,7 @@ saving_rate = 0
 
 while diff_cur_savings(start * 0.0001, current_savings, monthly_salary) * diff_cur_savings(end * 0.0001, current_savings, monthly_salary) < 0 :
     mid = (start + end) / 2
-    if abs(diff_cur_savings(mid * 0.0001, current_savings, monthly_salary)) == 0 or abs(diff_cur_savings(start * 0.0001, current_savings, monthly_salary) - diff_cur_savings(end * 0.0001, current_savings, monthly_salary))/2 < 100 : # 
+    if abs(diff_cur_savings(mid * 0.0001, current_savings, monthly_salary)) == 0 or abs(diff_cur_savings(start * 0.0001, current_savings, monthly_salary) - diff_cur_savings(end * 0.0001, current_savings, monthly_salary))/2 < 100 :  
         saving_rate = mid
         break
     elif diff_cur_savings(start * 0.0001, current_savings, monthly_salary) * diff_cur_savings(mid * 0.0001, current_savings, monthly_salary) < 0 : 
