@@ -142,11 +142,11 @@ def hangman(secret_word):
     # FILL IN YOUR CODE HERE AND DELETE "pass"
     print("Welcome to the game Hangman! \nI am thinking of a word that is %d letters long."%(len(secret_word)))
     print("-------------")
-    letters_guessed = []
+    letters_guessed = ["$"] # Random Initial String -> Any Better Way?
     guess = 6
     warning = 3
     previous_guessed_word = get_guessed_word(secret_word, letters_guessed)
-    print("previous word:", get_guessed_word(secret_word, letters_guessed))
+    letters_guessed.remove("$") 
     while guess >= 1 and not is_word_guessed(secret_word, letters_guessed) :
         print("You have %d guesses left." %(guess))
         print("Available letters:", get_available_letters(letters_guessed))
@@ -156,31 +156,43 @@ def hangman(secret_word):
                 warning -= 1
             else : 
                 guess -= 1
-            print("Oops! That is not a valid letter. You have %d warnings left:" %(warning), get_guessed_word(secret_word, letters_guessed))
-            print("----------")
+            print("Oops! That is not a valid letter. You have %d warnings left:" %(warning), get_guessed_word(secret_word, letters_guessed)) # That's fine
+            print("---------------")
         else :
+            letter_input = letter_input.lower()
             same = False
             for char in letters_guessed :
                 if char == letter_input :
                     same = True
-            if same :
+            if same : 
                 if warning > 0 :
                     warning -= 1
                 else : 
                     guess -= 1
-                    print("Oops! You've already guessed that letter. You now have %d warnings" %(warning), get_guessed_word(secret_word, letters_guessed))
+                print("Oops! You've already guessed that letter. You now have %d warnings" %(warning), get_guessed_word(secret_word, letters_guessed))
+                print("-----------------")
             else :
-                letters_guessed.append(letter_input.lower)
-                guess -= 1
+                letters_guessed.append(letter_input)
                 guessed_word = get_guessed_word(secret_word, letters_guessed)
-                print("letters_guessed:", letters_guessed)
                 if previous_guessed_word != guessed_word :
                     print("Good guess:", guessed_word)
-                    print("---------")
+                    print("-----------------")
                 else :
+                    guess -= 1
+                    vowel = ['a', 'e', 'i', 'o']
+                    for char in vowel :
+                        if char == letter_input :
+                            guess -= 1
+                            break
                     print("Oops! That letter is not in my word:", guessed_word)
-                    print("---------")
+                    print("----------------")
                 previous_guessed_word = guessed_word
+    if guess <= 0 :
+        print("Sorry, you ran out of guesses. The word was", secret_word)
+    else :
+        print("Congratulations, you won!")
+        score = guess * len(secret_word)
+        print("Your total score for this game is:", score)
     
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
