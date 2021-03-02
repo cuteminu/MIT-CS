@@ -219,34 +219,26 @@ def match_with_gaps(my_word, other_word):
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
     result = True
-    
     # Get rid of the spaces in the word. Can it be done with strip()?
     word = ""
     for char in my_word :
         if char != " " :
             word += char
-    letters = list(word)
-    
     letters_word = []
-    for char in letters :
+    for char in word :
         if char != "_":
             letters_word.append(char)
-            
     if len(word) != len(other_word) :
         return False
-    
     for i in range(len(word)) :
         char = word[i]
         if char != "_" :
-            letters_word.append(char)
             if char != other_word[i] :
                 result = False
         else : 
             if other_word[i] in letters_word :
-                result = False
-            
+                result = False 
     return result
-
 
 
 def show_possible_matches(my_word):
