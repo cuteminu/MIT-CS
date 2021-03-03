@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 """
 Created on Wed Sep 21 11:52:34 2016
 
@@ -20,7 +20,7 @@ def Towers(n, fr, to, spare):
         Towers(1, fr, to, spare)
         Towers(n-1, spare, to, fr)
 
-#print(Towers(4, 'P1', 'P2', 'P3'))
+# print(Towers(4, 'P1', 'P2', 'P3'))
 
 #####################################
 # EXAMPLE:  fibonacci
@@ -56,11 +56,11 @@ def isPalindrome(s):
 
     return isPal(toChars(s))
 
-#print(isPalindrome('eve'))
+# print(isPalindrome('eve'))
 #
-#print(isPalindrome('Able was I, ere I saw Elba'))
+# print(isPalindrome('Able was I, ere I saw Elba'))
 #
-#print(isPalindrome('Is this a palindrome'))
+# print(isPalindrome('Is this a palindrome'))
 
 #####################################
 # EXAMPLE: using dictionaries
@@ -130,6 +130,7 @@ she_loves_you = ['she', 'loves', 'you', 'yeah', 'yeah',
 
 beatles = lyrics_to_frequencies(she_loves_you)
 
+print(beatles.values())
 
 def most_common_words(freqs):
     values = freqs.values()
@@ -153,7 +154,7 @@ def words_often(freqs, minTimes):
             done = True
     return result
     
-#print(words_often(beatles, 5))
+print(words_often(beatles, 5))
 
 #####################################
 # EXAMPLE: comparing fibonacci using memoization
