@@ -91,8 +91,20 @@ def get_word_score(word, n):
     n: int >= 0
     returns: int >= 0
     """
+    word = word.lower()
     
-    pass  # TO DO... Remove this line when you implement this function
+    # First Component : Sum of points for letters in the word.
+    score1 = 0
+    for char in word :
+        score1 += SCRABBLE_LETTER_VALUES[char]
+    
+    # Second Component : Applyin' formula
+    score2 = 7 * len(word) - 3 * (n - len(word))
+    if score2 < 1 :
+        score2 = 1
+    
+    # Product
+    return score1 * score2
 
 #
 # Make sure you understand how this function works and what it does!
