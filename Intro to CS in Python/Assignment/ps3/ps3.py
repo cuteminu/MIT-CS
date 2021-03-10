@@ -179,8 +179,17 @@ def update_hand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-
-    pass  # TO DO... Remove this line when you implement this function
+    new_hand = hand.copy()
+    
+    word = word.lower()
+    
+    for char in word :
+        if char in hand.keys() :
+            new_hand[char] -= 1
+            if new_hand[char] < 0 :
+                new_hand[char] = 0
+    
+    return new_hand
 
 #
 # Problem #3: Test word validity
@@ -197,7 +206,7 @@ def is_valid_word(word, hand, word_list):
     returns: boolean
     """
 
-    pass  # TO DO... Remove this line when you implement this function
+    
 
 #
 # Problem #5: Playing a hand
